@@ -8,3 +8,4 @@ Collective memory and attention are sustained by two channels:
 Cristian Candia et al. gave a mathematic model to estimate the decay of collective memory.
 Now, I'm trying to implement this project in python3.6
 Estimate collective memory with survey data.
+
