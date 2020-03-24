@@ -12,13 +12,14 @@ import numpy as np
 import json
 import os
 
-flood = pd.read_csv('data/Water_data.csv', index_col=['year'])  # Water level of actual floodings.
+water_level = pd.read_csv('data/Water_data.csv', index_col=['year'])  # Water level of actual floodings.
 W_MIN, W_MAX = 1135.3, 1141.5  # The minimum and maxmum water level
 
-population = pd.read_csv("data/Population_ser.csv", index_col=[0], header=None, encoding="GBK", squeeze=True)
+# actual_population data
+actual_population = pd.read_csv("data/Population_ser.csv", index_col=[0], header=None, encoding="GBK", squeeze=True)
 estimated_population = pd.read_csv("data/Population_estimated_ser.csv", index_col=[0], header=None, squeeze=True)
-P_MIN: float = 160 * 10000 * 2.5  # Pessitive estimation of the population limits
-P_MAX: float = 200 * 10000 * 2.5  # positive estimation of the population limits
+P_MIN: float = 160 * 10000 * 2.5  # Pessitive estimation of the actual_population limits
+P_MAX: float = 200 * 10000 * 2.5  # positive estimation of the actual_population limits
 P_MEAN = (P_MIN + P_MAX) / 2
 
 # Questionair data
@@ -64,9 +65,9 @@ questionair = {
 
 def get_actual_water_series(start_year, end_year):
     ser = pd.Series(index=np.arange(start_year, end_year+1))
-    for i in flood.index:
+    for i in water_level.index:
         if i in ser.index:
-            ser[i] = flood.loc[i, 'flood_level']
+            ser[i] = water_level.loc[i, 'flood_level']
         else:
             pass
     return ser
@@ -78,9 +79,9 @@ def get_actual_levee_height(y):
 
 
 def get_population():
-    d_max = population / P_MIN
-    d_min = population / P_MAX
-    d_mean = population * 2 / (P_MAX + P_MIN)
+    d_max = actual_population / P_MIN
+    d_min = actual_population / P_MAX
+    d_mean = actual_population * 2 / (P_MAX + P_MIN)
     return d_max, d_mean, d_min
 
 

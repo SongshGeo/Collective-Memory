@@ -8,6 +8,7 @@ Beijing Normal University
 """
 
 
+# Initialization of plot setting
 def plot_initial_sets():
     from matplotlib import rc
     import matplotlib as mpl

@@ -8,7 +8,7 @@ Beijing Normal University
 """
 
 from simulating_floods import generate_random_flood_series
-from data_process import population, get_last_k, get_last_pqr, get_actual_levee_height
+from data_process import actual_population, get_last_k, get_last_pqr, get_actual_levee_height
 
 import pandas as pd
 import numpy as np
@@ -19,7 +19,7 @@ P_MIN: float = 160 * 10000 * 2.5  # Pessitive estimation of the population limit
 P_MAX: float = 200 * 10000 * 2.5  # positive estimation of the population limits
 THRESHOLD_F = 0  # The threshold for enhance.
 START_YEAR = 1940  # The start year of this study.
-INITIAL_POP = population[START_YEAR]  # Population in the start year (1940).
+INITIAL_POP = actual_population[START_YEAR]  # Population in the start year (1940).
 P, R, Q = [get_last_pqr()[k] for k in ['p', 'r', 'q']]  # Fitted parameters of integrate model
 K_OSM, K_IUDM = [get_last_k()[k] for k in ['osm', 'iudm']]  # Use the last result of optimise
 

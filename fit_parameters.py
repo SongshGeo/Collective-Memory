@@ -74,7 +74,7 @@ def get_prq_parameters(result_print=False, plot=False):
     def get_params():
         u, v = clean_questionaris(t_list=years)
         n = questionair['n']  # Number of total valid questionairs
-        ratio = population[SERVEY_YEAR] / (4 * n)
+        ratio = actual_population[SERVEY_YEAR] / (4 * n)
         optimised = fit(u*ratio, v*ratio)
         p, q, r = [optimised.params[key].value for key in ['p', 'q', 'r']]
         return [p, q, r]
@@ -198,7 +198,7 @@ def estimate_population_from_1904(plot=False):
         return p_arr - model
 
     fit_parameter = Parameters()
-    fit_parameter.add(name='population_in_1904', value=population[1940], min=0)
+    fit_parameter.add(name='population_in_1904', value=actual_population[1940], min=0)
     minner = Minimizer(residual, params=fit_parameter)
     result = minner.minimize().params
     print("Estimating population in 1904:")
