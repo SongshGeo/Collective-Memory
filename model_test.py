@@ -14,7 +14,7 @@ import numpy as np
 import pandas as pd
 
 # import from this project
-from data_process import get_population, questionair, get_actual_water_series, W_MAX, W_MIN
+from data_process import get_population, get_actual_water_series, W_MAX, W_MIN
 from collective_memory import main_function
 from fit_parameters import get_last_k
 from plot import plot_initial_sets
@@ -23,16 +23,22 @@ from plot import plot_initial_sets
 d_max, d_mean, d_min = get_population()  # Actual population data.
 err = d_max - d_mean  # error bar between passive and positive estimation.
 
-TEST_START_YEAR, TEST_END_YEAR = (1940, 2013)
+TEST_START_YEAR, TEST_END_YEAR = (1940, 2019)
 LEVEE_YEAR_1 = 1983
 t_arr = d_mean.loc[TEST_START_YEAR: TEST_END_YEAR].index
 
 
 def goodness_of_fit(yo, ym):
+    sst = ((yo - yo.mean()) ** 2).sum()
     sse = ((yo - ym) ** 2).sum()
-    sst = (yo ** 2).sum()
-    ssr = sst - sse
-    return ssr / sst
+    return 1 - sse / sst
+
+
+def adjusted_goodness(yo, ym):
+    n = len(yo)
+    sse = ((yo - ym) ** 2).sum() / (n - 2)
+    sst = ((yo - yo.mean()) ** 2).sum() / (n - 1)
+    return 1 - sse / sst
 
 
 def fit_nash(yo, ym):
@@ -41,18 +47,18 @@ def fit_nash(yo, ym):
     return 1 - a / b
 
 
-def questionair_bar_plot(ax):
-    t, u, v, n = [questionair[k] for k in ['t', 'u', 'v', 'n']]
-    bar_width = 0.35
-    tick_label = list(t)
-    x = np.arange(len(t))
-    ax.bar(x, u/n, bar_width, color="c", align="center", label="Heard from others", alpha=0.5)
-    ax.bar(x+bar_width, v/n, bar_width, color="m", align="center", label="Knew from physical recordings", alpha=0.5)
-    ax.set_xlabel("Flooding years")
-    ax.set_ylabel("Proportion of people")
-    ax.set_xticks(x+bar_width/2, tick_label)
-    ax.legend()
-    pass
+# def questionair_bar_plot(ax):
+#     t, u, v, n = [questionair[k] for k in ['t', 'u', 'v', 'n']]
+#     bar_width = 0.35
+#     tick_label = list(t)
+#     x = np.arange(len(t))
+#     ax.bar(x, u/n, bar_width, color="c", align="center", label="Heard from others", alpha=0.5)
+#     ax.bar(x+bar_width, v/n, bar_width, color="m", align="center", label="Knew from physical recordings", alpha=0.5)
+#     ax.set_xlabel("Flooding years")
+#     ax.set_ylabel("Proportion of people")
+#     ax.set_xticks(x+bar_width/2, tick_label)
+#     ax.legend()
+#     pass
 
 
 def get_models_results():
@@ -113,12 +119,12 @@ def different_models_test(ax):
     return goodness
 
 
-def plot_fig4():
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
-    questionair_bar_plot(ax1)
-    goodness = different_models_test(ax2)
-    plt.show()
-    return goodness
+# def plot_fig4():
+#     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+#     questionair_bar_plot(ax1)
+#     goodness = different_models_test(ax2)
+#     plt.show()
+#     return goodness
 
 
 def plot_fig5():
@@ -171,6 +177,6 @@ def plot_fig5():
 
 if __name__ == '__main__':
     plot_initial_sets()
-    test_results = plot_fig4()
+    # test_results = plot_fig4()
     plot_fig5()
     pass
