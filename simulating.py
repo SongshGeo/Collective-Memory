@@ -20,7 +20,7 @@ def plot(df):
 
     ax1 = fig.add_subplot(311)
     ax1.bar(t_arr, w, color="b", label="High water level (W)")
-    ax1.plot(t_arr, h, "--", color="k", label="Height of levee (H)")
+    # ax1.plot(t_arr, h, "--", color="k", label="Height of levee (H)")
     ax1.set_xlim(t_arr.min(), t_arr.max())
     plt.ylabel("( m )")
     plt.legend(loc=1)
@@ -41,7 +41,7 @@ def plot(df):
     ax4 = fig.add_subplot(325)
     markerline, stemlines, baseline = ax4.stem(t_arr, loss_osm, linefmt="-.", markerfmt="o", label="losses(F × D)",
                                                use_line_collection=True)
-    plt.setp(baseline, color="r", linewidth=2)
+    plt.setp(baseline, color="lightgray", linewidth=0.5)
     plt.setp(markerline, color="r")
     plt.setp(stemlines, color="m")
     ax4.legend(loc=1)
@@ -51,7 +51,7 @@ def plot(df):
     ax5 = fig.add_subplot(326)
     markerline, stemlines, baseline = ax5.stem(t_arr, loss_iudm, linefmt="-.", markerfmt="o",
                                                use_line_collection=True, label="losses(F × D)")
-    plt.setp(baseline, color="r", linewidth=2)
+    plt.setp(baseline, color="lightgray", linewidth=0.5)
     plt.setp(markerline, color="r")
     plt.setp(stemlines, color="m")
     ax5.set_xlim(t_arr.min(), t_arr.max())

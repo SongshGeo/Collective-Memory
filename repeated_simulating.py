@@ -8,7 +8,9 @@ Beijing Normal University
 """
 from collective_memory import main_function
 from generate_floods import generate_random_flood_series
+
 from matplotlib import pyplot as plt
+from scipy.stats import ttest_rel
 import numpy as np
 import pandas as pd
 
@@ -43,37 +45,48 @@ def boxplot(osm_list, iudm_list, labels, ax):
     plt.grid(axis="y", ls=":", lw=1, alpha=0.4)
 
 
-def repeating_different_frequency(kind, years, k, ax, times=100):
+def print_average_compare(df, kind, label):
+    osm = df['loss_osm'].mean()
+    iudm = df['loss_iudm'].mean()
+    percentage = (osm - iudm) / osm
+    print("Simulation in {} dataset, {}".format(kind, label))
+    print("Total losses by osm is {:.3f}, by iudm is {:.3f}, osm exceed iudm {:.3%}.".format(osm, iudm, percentage))
+
+
+def repeating_different_frequency(how, kind, years, k, ax, times=100):
     labels = ["+0%", "+20%", "+40%"]
     fres = [0., 0.2, 0.4]
     osm_list, iudm_list = [], []
     for i in range(len(fres)):
         fre = fres[i]
-        df = repeat_simulating(kind=kind, years=years, k=k, times=times, fre=fre)
-        osm_list.append(df['loss_osm']/years)
-        iudm_list.append(df['loss_iudm']/years)
+        df = repeat_simulating(how=how, kind=kind, years=years, k=k, times=times, fre=fre)
+        osm_list.append(df['loss_osm'])
+        iudm_list.append(df['loss_iudm'])
+        print_average_compare(df=df, kind=kind, label=labels[i])
     boxplot(osm_list, iudm_list, labels, ax)
 
 
-def repeat_different_duration(kind, k, ax, times=100):
+def repeat_different_duration(how, kind, k, ax, times=100):
     years = [50, 100, 200]
     osm_list, iudm_list = [], []
     labels = ["50 years", "100 years", "200 years"]
     for i in range(len(years)):
         length = years[i]
-        df = repeat_simulating(kind=kind, years=length, k=k, times=times)
-        osm_list.append(df['loss_osm']/length)
-        iudm_list.append(df['loss_iudm']/length)
+        df = repeat_simulating(how=how, kind=kind, years=length, k=k, times=times)
+        osm_list.append(df['loss_osm'])
+        iudm_list.append(df['loss_iudm'])
+        print_average_compare(df=df, kind=kind, label=labels[i])
     boxplot(osm_list, iudm_list, labels, ax)
 
 
-def plot_boxes_to_show_osm_iudm_differences(kind, title="show differences between models"):
+def plot_boxes_to_show_osm_iudm_differences(how, kind, k):
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8, 4))
-    repeating_different_frequency(kind=kind, years=100, k=0.03, ax=ax1)
-    repeat_different_duration(kind='all', k=0.03, ax=ax2)
-    plt.title(title)
+    repeating_different_frequency(how=how, kind=kind, years=100, k=k, ax=ax1)
+    repeat_different_duration(how=how, kind=kind, k=k, ax=ax2)
+    plt.title("show differences by {}".format(kind))
     plt.show()
 
 
 if __name__ == '__main__':
+    plot_boxes_to_show_osm_iudm_differences(how='exp', kind='all', k=.03)
     pass
