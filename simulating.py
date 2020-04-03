@@ -22,44 +22,42 @@ def plot(df):
     ax1.bar(t_arr, w, color="b", label="High water level (W)")
     ax1.plot(t_arr, h, "--", color="k", label="Height of levee (H)")
     ax1.set_xlim(t_arr.min(), t_arr.max())
-
     plt.ylabel("( m )")
     plt.legend(loc=1)
-    plt.subplot(323)
-    plt.plot(t_arr, u+v, "-", label="M")
-    plt.plot(t_arr, u, "--", color="c", label="U")
-    plt.plot(t_arr, v, "--", color="m", label="V")
-    plt.ylim(0, 0.3)
-    plt.xlim(t_arr.min(), t_arr.max())
-    plt.legend(loc=1)
 
-    plt.subplot(325)
-    markerline, stemlines, baseline = plt.stem(t_arr, loss_osm, linefmt="-.", markerfmt="o", label="losses(F × D)",
+    ax2 = fig.add_subplot(323)
+    ax2.plot(t_arr, u+v, "-", label="M")
+    ax2.plot(t_arr, u, "--", color="c", label="U")
+    ax2.plot(t_arr, v, "--", color="m", label="V")
+    ax2.set_xlim(t_arr.min(), t_arr.max())
+    ax2.legend()
+
+    ax3 = fig.add_subplot(324)
+    ax3.plot(t_arr, m, "-", label="M")
+    ax3.set_ylim(ax2.get_ylim())
+    ax3.set_xlim(t_arr.min(), t_arr.max())
+    ax3.legend()
+
+    ax4 = fig.add_subplot(325)
+    markerline, stemlines, baseline = ax4.stem(t_arr, loss_osm, linefmt="-.", markerfmt="o", label="losses(F × D)",
                                                use_line_collection=True)
     plt.setp(baseline, color="r", linewidth=2)
     plt.setp(markerline, color="r")
     plt.setp(stemlines, color="m")
-    plt.legend(loc=1)
-    plt.ylim(0, 0.04)
-    plt.xlim(t_arr.min(), t_arr.max())
-    plt.xlabel("Simulated by model integrated the UDM")
+    ax4.legend(loc=1)
+    ax4.set_xlim(t_arr.min(), t_arr.max())
+    ax4.set_xlabel("Simulated by model integrated the UDM")
 
-    plt.subplot(324)
-    plt.plot(t_arr, m, "-", label="M")
-    plt.ylim(0, 0.3)
-    plt.xlim(t_arr.min(), t_arr.max())
-    plt.legend(loc=1)
-
-    plt.subplot(326)
-    markerline, stemlines, baseline = plt.stem(t_arr, loss_iudm, linefmt="-.", markerfmt="o",
+    ax5 = fig.add_subplot(326)
+    markerline, stemlines, baseline = ax5.stem(t_arr, loss_iudm, linefmt="-.", markerfmt="o",
                                                use_line_collection=True, label="losses(F × D)")
     plt.setp(baseline, color="r", linewidth=2)
     plt.setp(markerline, color="r")
     plt.setp(stemlines, color="m")
-    plt.xlim(t_arr.min(), t_arr.max())
-    plt.xlabel("Simulation by traditional model")
-    plt.ylim(0, 0.04)
-    plt.legend(loc=1)
+    ax5.set_xlim(t_arr.min(), t_arr.max())
+    ax5.set_xlabel("Simulation by traditional model")
+    ax5.set_ylim(ax4.get_ylim())
+    ax5.legend(loc=1)
     plt.show()
 
 
@@ -77,5 +75,8 @@ def one_of_simulating(years, k, kind, fre=0., how='exp', random_state=None, tech
 
 
 if __name__ == '__main__':
-    simu_result = one_of_simulating(years=100, k=0.03, kind='all', how='linear', random_state=1, technology=False)
+    simu_result = one_of_simulating(years=100, k=0.03, kind='all', how='exp', random_state=1, technology=False)
+    osm = simu_result['loss_osm'].mean()
+    iudm = simu_result['loss_iudm'].mean()
+    percentage = (osm - iudm) / osm
     pass
