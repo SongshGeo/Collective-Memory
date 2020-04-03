@@ -146,8 +146,6 @@ def main_function(flood_ser, steps=1, how='fixed', pop_growth='exp',
 
 
 if __name__ == '__main__':
-    # ser = generate_random_flood_series(100)
-    # result = main_function(ser, 1, how='fixed')
-    for kind in ['all', 'farm', 'off-farm']:
-        print(get_last_mius(data=kind))
+    ser = generate_random_flood_series(100)
+    result = main_function(ser, 1, how='fixed')
     pass
