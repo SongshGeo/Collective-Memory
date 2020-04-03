@@ -139,8 +139,8 @@ def main_function(flood_ser, steps=1, how='fixed', pop_growth='exp',
         state_all = np.array([y, w, u, v, m, d_osm, d_iudm, h, f])
         h = get_levee_height(state_all, how)  # Levee height in the next year
         df.loc[y, :] = state_all
-    df['loss_osm'] = df['f'] * df['d_osm']
-    df['loss_iudm'] = df['f'] * df['d_iudm']
+    df['loss_osm'] = df['f'].replace(0., np.nan) * df['d_osm']
+    df['loss_iudm'] = df['f'].replace(0., np.nan) * df['d_iudm']
     df['u+v'] = df['u'] + df['v']
     return df
 

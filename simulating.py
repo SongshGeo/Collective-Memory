@@ -70,7 +70,9 @@ def one_of_simulating(years, k, kind, fre=0., how='exp', random_state=None, tech
     if technology:
         df2 = main_function(ser, how='enhance', k_osm=k, k_iudm=k, pop_growth=how)
         plot(df2)
-    print(ttest_rel(df['loss_osm'], df['loss_iudm']))
+    losses = df.loc[:, ['loss_osm', 'loss_iudm']]
+    losses.dropna(axis='rows', inplace=True)
+    print(ttest_rel(losses['loss_osm'], losses['loss_iudm']))
     return df
 
 
