@@ -15,14 +15,14 @@ from data_process import *
 from collective_memory import osm, iudm, judge_damage
 
 d_max, d_mean, d_min = get_population()  # Actual population data.
-FIT_START_YEAR, FIT_END_YEAR = (1940, 2013)  # Fit parameters between 1949 and 2019
+FIT_START_YEAR, FIT_END_YEAR = (1940, 2018)  # Fit parameters between 1949 and 2019
 LEVEE_YEAR_1 = 1983
 t_arr = d_mean.loc[FIT_START_YEAR: FIT_END_YEAR].index  # Year index used in fitting
 p_arr = d_mean.loc[FIT_START_YEAR: FIT_END_YEAR].values  # Pop data used in fitting
 
 
 def get_prq_parameters(result_print=False, plot=False):
-    years = questionair['t']
+    years = MAJOR_HISTORICAL_FLOODS
     flood_ser = get_actual_water_series(SERVEY_START_YEAR, SERVEY_YEAR)
     damage_ser = pd.Series(index=years)
     for year in years:
@@ -72,8 +72,9 @@ def get_prq_parameters(result_print=False, plot=False):
         return result
 
     def get_params():
-        u, v = clean_questionaris(t_list=years)
-        n = questionair['n']  # Number of total valid questionairs
+        df = stats_fre_questionnaris(questionnaires, t_list=years)
+        u, v, m = df['communicative'].values, df['cultural'].values, df['collective'].values
+        n = len(questionnaires)  # Number of total valid questionairs
         ratio = actual_population[SERVEY_YEAR] / (4 * n)
         optimised = fit(u*ratio, v*ratio)
         p, q, r = [optimised.params[key].value for key in ['p', 'q', 'r']]
@@ -99,7 +100,7 @@ def get_prq_parameters(result_print=False, plot=False):
     return para
 
 
-def simu_k(model, result_print=False):
+def simu_k(model, result_print=False, how='exp'):
     ser = get_actual_water_series(FIT_START_YEAR, FIT_END_YEAR)
     d_initial = d_mean[FIT_START_YEAR]
 
@@ -113,8 +114,8 @@ def simu_k(model, result_print=False):
             w = ser[i]
             h = get_actual_levee_height(i)
             f = judge_damage(w, h)
-            m, d_osm = osm([f, m, d_osm], steps=1, k_osm=k)
-            u, v, d_iudm = iudm([f, u, v, d_iudm], steps=1, k_iudm=k)
+            m, d_osm = osm([f, m, d_osm], steps=1, k_osm=k, how=how)
+            u, v, d_iudm = iudm([f, u, v, d_iudm], steps=1, k_iudm=k, how=how)
             if i in t_arr:
                 if model == 'osm':
                     y_model.append(d_osm)
@@ -205,20 +206,24 @@ def estimate_population_from_1904(plot=False):
     result.pretty_print()
     n_1904 = result['population_in_1904'].value
     t_estimate = np.arange(t_1904, SERVEY_YEAR)
-    pop = exp_model(t_estimate, t_1904, n_1904, k_1904) * P_MEAN
+    pop_ = exp_model(t_estimate, t_1904, n_1904, k_1904) * P_MEAN
 
     if plot:
-        plt.plot(t_estimate, pop, label="Estimated population in 1904 is {:.0f}".format(n_1904 * P_MEAN))
+        plt.plot(t_estimate, pop_, label="Estimated population in 1904 is {:.0f}".format(n_1904 * P_MEAN))
         plt.legend()
         plt.show()
 
-    return pd.Series(pop, index=t_estimate)
+    return pd.Series(pop_, index=t_estimate)
 
 
-def do_main_simu():
+def do_main_simu(how='exp'):
+    """
+    param k is population growth rate
+    :return:
+    """
     k1, k21, k22 = get_k(result_print=True)
-    k_osm = simu_k('osm', result_print=True)
-    k_iudm = simu_k('iudm', result_print=True)
+    k_osm = simu_k('osm', result_print=True, how=how)
+    k_iudm = simu_k('iudm', result_print=True, how=how)
     k_dic = {'k1': k1,
              'k21': k21,
              'k22': k22,
@@ -247,8 +252,40 @@ def do_pqr_simu():
     print('Successfully stored "p, q, and r" parameters as a json file.')
 
 
+def fit_exp_decay(bounder=True):
+    # influenced of each major flood
+    major_floods["relative_level"] = major_floods['flood_level'] - W_MIN
+
+    # collective memory in ratio as a y_data
+    ratio_collective = stats_fre_questionnaris(questionnaires, MAJOR_HISTORICAL_FLOODS, normalize=True)['collective']
+
+    def exp_decay(t1, t0, n0, k):
+        return n0 * np.exp(-k * (t1 - t0))
+
+    def residual(params):
+        n0, k = params['n'], params['k']
+        influence = n0 * major_floods['relative_level']
+        y_model = []
+        for year in MAJOR_HISTORICAL_FLOODS:
+            y_model.append(exp_decay(t1=SERVEY_YEAR, t0=year, n0=influence[year], k=k))
+        return np.array(y_model) - ratio_collective
+
+    fit_params = Parameters()
+    if bounder:
+        fit_params.add(name='n', value=1, min=0, max=1)
+    else:
+        fit_params.add(name='n', value=22, min=0)
+    fit_params.add(name='k', value=0.015, min=0)
+    minner = Minimizer(residual, fit_params)
+    result = minner.minimize()
+    report_fit(result)
+    return result.params
+
+
 if __name__ == '__main__':
     do_main_simu()
-    do_population_simu()
-    do_pqr_simu()
+    # do_population_simu()
+    # do_pqr_simu()
+    # exp_decay_params = fit_exp_decay(plot=True, bounder=True)
+    # get_prq_parameters(result_print=True, plot=True)
     pass

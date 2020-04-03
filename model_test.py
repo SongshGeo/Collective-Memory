@@ -36,9 +36,11 @@ def goodness_of_fit(yo, ym):
 
 def adjusted_goodness(yo, ym):
     n = len(yo)
-    sse = ((yo - ym) ** 2).sum() / (n - 2)
-    sst = ((yo - yo.mean()) ** 2).sum() / (n - 1)
-    return 1 - sse / sst
+    sst = ((yo - yo.mean()) ** 2).sum()
+    sse = ((yo - ym) ** 2).sum()
+    df_e = n - 2
+    df_t = n - 1
+    return 1 - (sse / df_e) / (sst / df_t)
 
 
 def fit_nash(yo, ym):
@@ -47,21 +49,7 @@ def fit_nash(yo, ym):
     return 1 - a / b
 
 
-# def questionair_bar_plot(ax):
-#     t, u, v, n = [questionair[k] for k in ['t', 'u', 'v', 'n']]
-#     bar_width = 0.35
-#     tick_label = list(t)
-#     x = np.arange(len(t))
-#     ax.bar(x, u/n, bar_width, color="c", align="center", label="Heard from others", alpha=0.5)
-#     ax.bar(x+bar_width, v/n, bar_width, color="m", align="center", label="Knew from physical recordings", alpha=0.5)
-#     ax.set_xlabel("Flooding years")
-#     ax.set_ylabel("Proportion of people")
-#     ax.set_xticks(x+bar_width/2, tick_label)
-#     ax.legend()
-#     pass
-
-
-def get_models_results():
+def get_models_results(pop_growth='exp'):
 
     def exp(t, t_0, n0, k):
         e = math.e
@@ -80,7 +68,7 @@ def get_models_results():
     t1 = LEVEE_YEAR_1
     k1, k21, k22, k_osm, k_iudm = [get_last_k()[key] for key in ['k1', 'k21', 'k22', 'osm', 'iudm']]
     ser = get_actual_water_series(TEST_START_YEAR, TEST_END_YEAR)
-    simu = main_function(ser, 1)
+    simu = main_function(ser, 1, pop_growth=pop_growth)
 
     # Do simulating
     first_model = exp(t_arr, t0, d_mean[t0], k1)
@@ -89,15 +77,12 @@ def get_models_results():
     osm_model = simu['d_osm'].loc[t_arr]
 
     # results
-    print("used parameters in this test:")
-    for key in ['k1', 'k21', 'k22', 'osm', 'iudm']:
-        print("{}: {:.3f}".format(key, get_last_k()[key]))
     simulations = {'first': first_model, 'second': second_model, 'IUDM': iudm_model, 'OSM': osm_model}
     return simulations
 
 
-def different_models_test(ax):
-    simulation_results = get_models_results()
+def different_models_test(ax, pop_growth='exp'):
+    simulation_results = get_models_results(pop_growth)
     y_data = d_mean.loc[TEST_START_YEAR:TEST_END_YEAR]
     goodness = pd.DataFrame(index=list(simulation_results.keys()))
 
@@ -119,17 +104,16 @@ def different_models_test(ax):
     return goodness
 
 
-# def plot_fig4():
-#     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
-#     questionair_bar_plot(ax1)
-#     goodness = different_models_test(ax2)
-#     plt.show()
-#     return goodness
+def plot_fig4(pop_growth='exp'):
+    fig, ax = plt.subplots(figsize=(12, 5))
+    goodness = different_models_test(ax, pop_growth=pop_growth)
+    plt.show()
+    return goodness
 
 
-def plot_fig5():
+def plot_fig5(pop_growth='exp'):
     ser = get_actual_water_series(TEST_START_YEAR, TEST_END_YEAR)
-    df = main_function(ser, steps=1)
+    df = main_function(ser, steps=1, pop_growth=pop_growth)
 
     y, w, h = df['y'], df['w'], df['h']
     u, v, m = df['u'], df['v'], df['m']
@@ -177,6 +161,6 @@ def plot_fig5():
 
 if __name__ == '__main__':
     plot_initial_sets()
-    # test_results = plot_fig4()
+    test_results = plot_fig4()
     plot_fig5()
     pass

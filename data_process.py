@@ -12,11 +12,15 @@ import numpy as np
 import json
 import os
 
+# Water level data
 water_level = pd.read_csv('data/Water_data.csv', index_col=['year'])  # Water level of actual floodings.
 W_MIN, W_MAX = 1135.3, 1141.5  # The minimum and maxmum water level
+MAJOR_HISTORICAL_FLOODS = np.array([1904, 1946, 1964, 1981, 2012])
+major_floods = water_level.loc[MAJOR_HISTORICAL_FLOODS]
 
 # actual_population data
 actual_population = pd.read_csv("data/Population_ser.csv", index_col=[0], header=None, encoding="GBK", squeeze=True)
+pop = pd.read_csv('data/Population_data.csv', encoding='gbk')
 estimated_population = pd.read_csv("data/Population_estimated_ser.csv", index_col=[0], header=None, squeeze=True)
 P_MIN: float = 160 * 10000 * 2.5  # Pessitive estimation of the actual_population limits
 P_MAX: float = 200 * 10000 * 2.5  # positive estimation of the actual_population limits
@@ -25,14 +29,13 @@ P_MEAN = (P_MIN + P_MAX) / 2
 # Questionair data
 SERVEY_START_YEAR = 1904
 SERVEY_YEAR = 2018  # We do this servey in 2018
-queries = pd.read_csv('data/CM_data.csv', index_col=[0], encoding='gbk')
-SERVEY_YEARS = np.array([1904, 1946, 1964, 1981, 2012])
+questionnaires = pd.read_csv("data/valid_data_in_English.csv", index_col=[0], encoding='utf8')
 EXPECTANCY = 73.38  # Expectation of life in the servey year, study area.
 
 
 def class_answers_type(answer, h, r):
-    heard_of_answers = ["有所耳闻", "周遭经历"]  # These answers refer communicative momery
-    records_answer = ['书面记载']  # This answer refers cultural memory
+    heard_of_answers = ["heard of somewhere", "heard from intimates"]  # These answers refer communicative momery
+    records_answer = ['know from written records']  # This answer refers cultural memory
     answers = answer.split("; ")
     for answer in answers:
         answer = answer.strip()
@@ -45,22 +48,19 @@ def class_answers_type(answer, h, r):
     return h, r
 
 
-def clean_questionaris(t_list):
-    ser_u, ser_v = pd.Series(index=t_list), pd.Series(index=t_list)
+def stats_fre_questionnaris(data, t_list, normalize=False):
+    df = pd.DataFrame(index=t_list)
+    collective_answers = ["heard of somewhere", "heard from intimates", 'know from written records', 'experienced']
     for year in t_list:
         heards, records = [], []
-        queries[str(year)].apply(class_answers_type, args=[heards, records])
-        ser_u.loc[year] = np.array(heards).sum()
-        ser_v.loc[year] = np.array(records).sum()
-    return ser_u.values, ser_v.values
-
-
-questionair = {
-    't': SERVEY_YEARS,  # Querying years.
-    'u': clean_questionaris(SERVEY_YEARS)[0],  # Heard from others.
-    'v': clean_questionaris(SERVEY_YEARS)[1],  # Knew from physical records.
-    'n': len(queries)  # Total number of questionairs.
-}
+        data[str(year)].apply(class_answers_type, args=[heards, records])
+        df.loc[year, 'communicative'] = np.array(heards).sum()
+        df.loc[year, 'cultural'] = np.array(records).sum()
+        df.loc[year, 'collective'] = data[str(year)].apply(lambda x: True if x in collective_answers else False).sum()
+    if normalize:
+        for col in df:
+            df[col] = df[col] / len(data)
+    return df
 
 
 def get_actual_water_series(start_year, end_year):
@@ -98,17 +98,26 @@ def get_last_k():
     return k_dic
 
 
-def get_last_pqr():
-    if os.path.exists('pqr_dic.json'):
-        with open('pqr_dic.json', 'r') as f:
+def get_last_pqr(data):
+    file_name = 'data/{}_pqr_dic.json'.format(data)
+    if os.path.exists(file_name):
+        with open(file_name, 'r') as f:
             pqr_dic = json.load(f)
     else:
-        pqr_dic = {
-            'p': 0.0920,
-            'r': 0.0142,
-            'q': 0
-        }
+        print("{} not exists.".format(file_name))
+        raise FileExistsError
     return pqr_dic
+
+
+def get_last_mius(data):
+    file_name = 'data/{}_miu_s.json'.format(data)
+    if os.path.exists(file_name):
+        with open(file_name, 'r') as f:
+            miu_s = json.load(f)
+    else:
+        print("{} not exists.".format(file_name))
+        raise FileExistsError
+    return miu_s
 
 
 if __name__ == '__main__':

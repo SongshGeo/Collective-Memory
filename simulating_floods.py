@@ -30,23 +30,25 @@ def random_water_level(theta):
     return w
 
 
-def generate_random_flood_series(years, random_state=None):
+def generate_random_flood_series(years, random_state=None, fre=0):
     """
     To generate a series of flood with maximum of water level, randomly.
+    :param fre: Increasing possibility of flooding.
     :param years: The length of flood series (year).
     :param random_state: Random seedling set
     :return: A series, with year as index, water level as value.
     """
-    # TODO 增加一个随机种子生成器
+    random.seed(random_state)  # random seed.
     ser = pd.Series(np.zeros(years), index=np.arange(years))  # To store results
     t = 0
     for flag in np.arange(years):
         pt = 1 - np.e ** (-t)  # Probability of flooding.
-        if random.uniform(0.0, 1.0) < pt:    # flooding
+        ran = random.uniform(fre, 1.0)
+        if ran < pt:    # flooding
             w = random_water_level(THETA)  # Water level
             t = 0  # Initiate the possibility of flooding
             ser[flag] = w  # The water level in the "flag" year.
-        if random.uniform(0.0, 1.0) >= pt:   # no flooding
+        if ran >= pt:   # no flooding
             t += 1
         flag += 1
     return ser

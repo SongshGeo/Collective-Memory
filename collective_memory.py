@@ -60,8 +60,8 @@ def get_initial_values():
     return initial_values
 
 
-def osm(state, steps, k_osm, how='exp'):
-    miu_s = get_last_mius()  # Decay rate of collective memory, from the osm
+def osm(state, steps, k_osm, how='exp', kind='all'):
+    miu_s = get_last_mius(data=kind)  # Decay rate of collective memory, from the osm
     f, m, d = state
     delta_m = - miu_s * m + f * d
     if how == 'exp':
@@ -73,8 +73,8 @@ def osm(state, steps, k_osm, how='exp'):
     return [new_m, new_d]
 
 
-def iudm(state, steps, k_iudm, how='exp'):
-    p, r, q = [get_last_pqr()[k] for k in ['p', 'r', 'q']]
+def iudm(state, steps, k_iudm, how='exp', kind='all'):
+    p, r, q = [get_last_pqr(data=kind)[k] for k in ['p', 'r', 'q']]
     f, u, v, d = state
     m = u + v
     delta_u = -(p + r) * u + f * d
@@ -109,9 +109,9 @@ def judge_damage(w, h):
     return f
 
 
-def print_parameters(title=False):
-    miu_s = get_last_mius()  # Decay rate of collective memory, from the osm
-    p, r, q = [get_last_pqr()[k] for k in ['p', 'r', 'q']]
+def print_parameters(title=False, kind='all'):
+    miu_s = get_last_mius(data=kind)  # Decay rate of collective memory, from the osm
+    p, r, q = [get_last_pqr(data=kind)[k] for k in ['p', 'r', 'q']]
     if title:
         return "p = {:.3f}, r = {:.3f}, q = {:.3f}, miu_s = {:.3f}".format(p, r, q, miu_s)
     else:
@@ -120,7 +120,8 @@ def print_parameters(title=False):
         print("miu_s = {:.3f}".format(miu_s))
 
 
-def main_function(flood_ser, steps=1, how='fixed', pop_growth='exp', k_osm=K_OSM, k_iudm=K_IUDM, print_params=True):
+def main_function(flood_ser, steps=1, how='fixed', pop_growth='exp',
+                  k_osm=K_OSM, k_iudm=K_IUDM, print_params=True, kind='all'):
     if print_params:
         print_parameters()
         print("k_osm = {:.3f}, k_iudm = {:.3f}".format(k_osm, k_iudm))
@@ -133,8 +134,8 @@ def main_function(flood_ser, steps=1, how='fixed', pop_growth='exp', k_osm=K_OSM
         f = judge_damage(w, h)
         state_iudm = [f, u, v, d_iudm]
         state_osm = [f, m, d_osm]
-        u, v, d_iudm = iudm(state_iudm, steps, k_iudm, pop_growth)
-        m, d_osm = osm(state_osm, steps, k_osm, pop_growth)
+        u, v, d_iudm = iudm(state_iudm, steps, k_iudm, pop_growth, kind=kind)
+        m, d_osm = osm(state_osm, steps, k_osm, pop_growth, kind=kind)
         state_all = np.array([y, w, u, v, m, d_osm, d_iudm, h, f])
         h = get_levee_height(state_all, how)  # Levee height in the next year
         df.loc[y, :] = state_all
@@ -145,6 +146,8 @@ def main_function(flood_ser, steps=1, how='fixed', pop_growth='exp', k_osm=K_OSM
 
 
 if __name__ == '__main__':
-    ser = generate_random_flood_series(100)
-    result = main_function(ser, 1, how='fixed')
+    # ser = generate_random_flood_series(100)
+    # result = main_function(ser, 1, how='fixed')
+    for kind in ['all', 'farm', 'off-farm']:
+        print(get_last_mius(data=kind))
     pass
