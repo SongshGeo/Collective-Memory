@@ -240,18 +240,6 @@ def do_population_simu():
     print('Successfully stored estimated population data as a csv file.')
 
 
-def do_pqr_simu():
-    p, q, r = get_prq_parameters(result_print=True, plot=True)
-    pqr_dic = {
-        'p': p,
-        'q': q,
-        'r': r
-    }
-    with open('data/pqr_dic.json', 'w') as f:
-        json.dump(pqr_dic, f)
-    print('Successfully stored "p, q, and r" parameters as a json file.')
-
-
 def fit_exp_decay(bounder=True):
     # influenced of each major flood
     major_floods["relative_level"] = major_floods['flood_level'] - W_MIN

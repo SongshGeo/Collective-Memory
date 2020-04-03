@@ -14,7 +14,7 @@ import seaborn as sns
 from data_process import *
 from collective_memory import judge_damage
 from model_test import fit_nash, goodness_of_fit, adjusted_goodness
-from repeat import repeat_simulating, one_of_simulating
+from repeated_simulating import repeat_simulating, one_of_simulating
 
 fit_result = pd.DataFrame(columns=['data', 'vary', 'bound', 'x_col', 'y_col', 'params', 'nash', 'r2', 'adj_r2'])
 VARY = True

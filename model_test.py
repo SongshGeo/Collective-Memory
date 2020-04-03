@@ -16,8 +16,7 @@ import pandas as pd
 # import from this project
 from data_process import get_population, get_actual_water_series, W_MAX, W_MIN
 from collective_memory import main_function
-from fit_parameters import get_last_k
-from plot import plot_initial_sets
+from pop_growth_fit import get_last_k
 
 
 d_max, d_mean, d_min = get_population()  # Actual population data.
@@ -26,6 +25,19 @@ err = d_max - d_mean  # error bar between passive and positive estimation.
 TEST_START_YEAR, TEST_END_YEAR = (1940, 2019)
 LEVEE_YEAR_1 = 1983
 t_arr = d_mean.loc[TEST_START_YEAR: TEST_END_YEAR].index
+
+
+def plot_initial_sets():
+    from matplotlib import rc
+    import matplotlib as mpl
+    rc('text', usetex=True)
+    rc('text.latex', preamble=r"""
+    \usepackage[eulergreek]{sansmath}\sansmath
+    \renewcommand{\rmdefault}{phv} % Arial
+    \renewcommand{\sfdefault}{phv} % Arial
+    """)
+    mpl.rcParams["font.sans-serif"] = ["Arial"]
+    mpl.rcParams["axes.unicode_minus"] = False
 
 
 def goodness_of_fit(yo, ym):

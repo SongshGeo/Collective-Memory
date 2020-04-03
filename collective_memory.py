@@ -7,7 +7,7 @@ Beijing Normal University
 @Time    :   2020/3/18 22:41
 """
 
-from simulating_floods import generate_random_flood_series
+from generate_floods import generate_random_flood_series
 from data_process import actual_population, get_last_k, get_last_pqr, get_actual_levee_height, get_last_mius
 
 import pandas as pd
@@ -111,7 +111,7 @@ def judge_damage(w, h):
 
 def print_parameters(title=False, kind='all'):
     miu_s = get_last_mius(data=kind)  # Decay rate of collective memory, from the osm
-    p, r, q = [get_last_pqr(data=kind)[k] for k in ['p', 'r', 'q']]
+    p, r, q = [get_last_pqr(data=kind)[k] for k in ['p', 'r', 'q']]  # Decay rates of memory, from the iudm
     if title:
         return "p = {:.3f}, r = {:.3f}, q = {:.3f}, miu_s = {:.3f}".format(p, r, q, miu_s)
     else:
