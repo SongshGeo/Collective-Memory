@@ -64,7 +64,6 @@ def plot(df):
 def one_of_simulating(years, k, kind, fre=0., how='exp', random_state=None, technology=False):
     ser = generate_random_flood_series(years=years, fre=fre, random_state=random_state)
     df = main_function(ser, how=None, k_iudm=k, k_osm=k, pop_growth=how, kind=kind)
-    plot(df)
     if technology:
         df2 = main_function(ser, how='enhance', k_osm=k, k_iudm=k, pop_growth=how)
         plot(df2)

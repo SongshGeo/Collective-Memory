@@ -39,27 +39,39 @@ def boxes_of_data_kinds(df, osm_col, iudm_col):
     plt.show()
 
 
-def r_sensibility(initial_kind='all', interval=0.2):
-    p, r, q = [get_last_pqr(initial_kind)[k] for k in ['p', 'r', 'q']]
-    result_list = []
-    for r in np.arange(0.1, 1, interval):
-        pqr_dic = {
-            'p': p,
-            'q': r,
-            'r': q
+def r_sensibility(initial_kind='all', interval=0.2, plot=False):
+    def dump_data(param_p, param_r, param_q):
+        miu_s = 0.016
+        dic = {
+            'p': param_p,
+            'q': param_q,
+            'r': param_r
         }
-        with open('data/{}_pqr_dic.json'.format(initial_kind), 'w') as f:
-            json.dump(pqr_dic, f)
-        print('Successfully stored "p, q, and r" parameters as a json file.')
+        with open('data/sensibility_pqr_dic.json'.format(initial_kind), 'w') as file:
+            json.dump(dic, file)
+        with open('data/sensibility_miu_s.json', 'w') as file:
+            json.dump(miu_s, file)
 
-        result = repeat_simulating(kind=initial_kind, years=100, k=0.03)
-        result['used r'] = str(r)
+    params = [[], [], []]
+    for kind in ['all', 'farm', 'off-farm']:
+        p, r, q = [get_last_pqr(kind)[k] for k in ['p', 'r', 'q']]
+        params[0].append(p)
+        params[1].append(r)
+        params[2].append(q)
+    p_initial, r_initial, q_initial = [np.array(params[i]).mean() for i in range(3)]
+    dump_data(p_initial, r_initial, q_initial)
+
+    result_list = []
+    for r_new in np.arange(0.1, 1, interval):
+        dump_data(p_initial, r_new, q_initial)
+        result = repeat_simulating(kind='sensibility', years=100, k=0.03)
+        result['used r'] = "{:.2f}".format(r)
         result_list.append(result)
     data = pd.concat(result_list)
-    sns.boxplot(x='used r', y='loss_iudm', data=data)
-    plt.show()
-    iudm_decay_model(initial_kind)
-    plt.show()
+    if plot:
+        sns.boxplot(x='used r', y='loss_iudm', data=data)
+        plt.show()
+    return data
 
 
 def compare_models_ttest(df):
@@ -97,5 +109,5 @@ if __name__ == '__main__':
     boxes_of_data_kinds(all_results, 'loss_osm', 'loss_iudm')
     plt.show()
 
-    r_sensibility()
+    r_sensibility(plot=True)
     pass

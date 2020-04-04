@@ -104,8 +104,7 @@ def get_last_pqr(data):
         with open(file_name, 'r') as f:
             pqr_dic = json.load(f)
     else:
-        print("{} not exists.".format(file_name))
-        raise FileExistsError
+        raise FileExistsError("{} not exists.".format(file_name))
     return pqr_dic
 
 
@@ -115,8 +114,7 @@ def get_last_mius(data):
         with open(file_name, 'r') as f:
             miu_s = json.load(f)
     else:
-        print("{} not exists.".format(file_name))
-        raise FileExistsError
+        raise FileExistsError("{} not exists.".format(file_name))
     return miu_s
 
 
