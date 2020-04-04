@@ -9,7 +9,6 @@ Beijing Normal University
 
 from matplotlib import pyplot as plt
 from lmfit import Parameters, Minimizer, report_fit
-import seaborn as sns
 
 from data_process import *
 from collective_memory import judge_damage
@@ -20,13 +19,25 @@ VARY = True
 BOUND = False
 
 
+def exp_decay(t1, t0, initial_n, mius):
+    return initial_n * (1 - mius) ** (t1 - t0)
+
+
+def ut(t, n, p, r):
+    return n * np.exp(-(p + r) * t)
+
+
+def vt(t, n, p, r, q):
+    return (n * r / (p + r - q)) * (np.exp((-q) * t) - np.e ** (-(p + r) * t))
+
+
+def mt(t, n, p, r, q):
+    return (n / (p + r - q)) * ((p - q) * np.exp(-(p + r) * t) + r * np.exp(-q * t))
+
+
 def get_data(kind):
     index = list(MAJOR_HISTORICAL_FLOODS) + [2018]
     flood = pd.DataFrame(index=index)
-
-    datasets = {'all': questionnaires, 'farm': questionnaires[questionnaires['farm']],
-                'off-farm': questionnaires[questionnaires['farm'] == False]}
-
     data = datasets[kind]
 
     for y in MAJOR_HISTORICAL_FLOODS:
@@ -53,15 +64,12 @@ def exp_decay_model(kind):
         x_data = flood[flood_col]
         y_data = memory[memory_col]
 
-        def exp_decay(t1, t0, n, mius):
-            return n * (1 - mius) ** (t1 - t0)
-
-        def residual(params, x, y):
-            n, miuis = params['n'], params['k']
-            influences = n * nomarlization(x)
+        def residual(parameters, x, y):
+            param_n, miuis = parameters['n'], parameters['k']
+            influences = param_n * nomarlization(x)
             y_ = []
             for year in MAJOR_HISTORICAL_FLOODS:
-                y_.append(exp_decay(t1=SERVEY_YEAR, t0=year, n=influences[year], mius=miuis))
+                y_.append(exp_decay(t1=SERVEY_YEAR, t0=year, initial_n=influences[year], mius=miuis))
             return np.array(y_) - y
 
         fit_params = Parameters()
@@ -75,8 +83,8 @@ def exp_decay_model(kind):
         report_fit(result)
 
         colors = ['b', 'g', 'r', 'c', 'm']
-        k, n0 = [result.params[key].value for key in ['k', 'n']]
-        influence = n0 * nomarlization(x_data).loc[MAJOR_HISTORICAL_FLOODS]
+        k, n = [result.params[key].value for key in ['k', 'n']]
+        influence = n * nomarlization(x_data).loc[MAJOR_HISTORICAL_FLOODS]
         y_model = []
 
         # plotting
@@ -107,18 +115,25 @@ def exp_decay_model(kind):
             'bound': bounder,
             'x_col': flood_col,
             'y_col': memory_col,
-            'params': "n = {:.3f}, k = {:.3f}".format(n0, k),
+            'params': "n = {:.3f}, k = {:.3f}".format(n, k),
             'nash': "{:.3f}".format(nash),
             'r2': "{:.3f}".format(r2),
             'adj_r2': "{:.3f}".format(adj_r2)
         }
-        return k, re
+        dic = {
+            'n': n,
+            'k': k
+        }
+        return dic, re
 
-    miu_s, setting = fit_exp_decay('relative_level', 'collective', bounder=BOUND, vary=VARY)
-
+    params, setting = fit_exp_decay('relative_level', 'collective', bounder=BOUND, vary=VARY)
+    miu_s, n0 = [params[key] for key in ['k', 'n']]
     with open('data/{}_miu_s.json'.format(kind), 'w') as f:
         json.dump(miu_s, f)
     print('Successfully stored "miu_s" parameter as a json file.')
+
+    with open('data/{}_exp_params.json'.format(kind), 'w') as f:
+        json.dump(params, f)
 
 
 def iudm_decay_model(kind):
@@ -130,16 +145,6 @@ def iudm_decay_model(kind):
         v_data = list(memory['cultural'].values)
         m_data = list(memory[memory_col].values)
         y_data = np.array(u_data + v_data + m_data)
-
-        # Fitting
-        def ut(t, n, p, r):
-            return n * np.exp(-(p + r) * t)
-
-        def vt(t, n, p, r, q):
-            return (n * r / (p + r - q)) * (np.exp((-q) * t) - np.e ** (-(p + r) * t))
-
-        def mt(t, n, p, r, q):
-            return (n / (p + r - q)) * ((p - q) * np.exp(-(p + r) * t) + r * np.exp(-q * t))
 
         def residuals(parameters, x, y):
             n, p, r, q = parameters['n'], parameters['p'], parameters['r'], parameters['q']
@@ -225,19 +230,27 @@ def iudm_decay_model(kind):
             'r2': "{:.3f}".format(r2),
             'adj_r2': "{:.3f}".format(adj_r2)
         }
-
-        return (param_p, param_r, param_q), re
+        dic = {
+            'n': n0,
+            'p': param_p,
+            'r': param_r,
+            'q': param_q
+        }
+        return dic, re
 
     params, setting = fit_prq_decay('relative_level', 'sum', bounder=BOUND, vary=VARY)
 
     pqr_dic = {
-        'p': params[0],
-        'q': params[2],
-        'r': params[1]
+        'p': params['p'],
+        'q': params['q'],
+        'r': params['r']
     }
     with open('data/{}_pqr_dic.json'.format(kind), 'w') as f:
         json.dump(pqr_dic, f)
     print('Successfully stored "p, q, and r" parameters as a json file.')
+
+    with open('data/{}_iudm_params.json'.format(kind), 'w') as f:
+        json.dump(params, f)
 
 
 def do_diff_pqr_and_mius_simulations():

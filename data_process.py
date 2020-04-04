@@ -62,6 +62,7 @@ def stats_fre_questionnaris(data, t_list, normalize=False):
     if normalize:
         for col in df:
             df[col] = df[col] / len(data)
+    df['sum'] = df['communicative'] + df['cultural']
     return df
 
 
@@ -118,6 +119,16 @@ def get_last_mius(data):
     else:
         raise FileExistsError("{} not exists.".format(file_name))
     return miu_s
+
+
+def get_decay_params(data, model):
+    file_name = 'data/{}_{}_params.json'.format(data, model)
+    if os.path.exists(file_name):
+        with open(file_name, 'r') as f:
+            params = json.load(f)
+    else:
+        raise FileExistsError("{} not exists.".format(file_name))
+    return params
 
 
 if __name__ == '__main__':
