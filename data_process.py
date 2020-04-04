@@ -31,6 +31,8 @@ SERVEY_START_YEAR = 1904
 SERVEY_YEAR = 2018  # We do this servey in 2018
 questionnaires = pd.read_csv("data/valid_data_in_English.csv", index_col=[0], encoding='utf8')
 EXPECTANCY = 73.38  # Expectation of life in the servey year, study area.
+datasets = {'all': questionnaires, 'farm': questionnaires[questionnaires['farm']],
+            'off-farm': questionnaires[questionnaires['farm'] == False]}
 
 
 def class_answers_type(answer, h, r):
