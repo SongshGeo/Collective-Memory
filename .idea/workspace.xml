@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f68d94a5-4fda-48b4-9b4f-09b529bc4d12" name="Default Changelist" comment="rename">
-      <change afterPath="$PROJECT_DIR$/.ipynb_checkpoints/test_fitting-checkpoint.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/valid_data_in_English.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/result1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/sankey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plotting_result1.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plotting_result2.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plotting_result3.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/k_list.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/miu_s.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/pqr_dic.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_process.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decay_rates_fit.py" beforeDir="false" afterPath="$PROJECT_DIR$/decay_rates_fit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plot.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/plotting.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plotting_result1.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/plotting_result1.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plotting_result2.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/plotting_result2.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,6 +132,9 @@
       <module name="Collective-Memory" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -204,8 +196,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.decay_rates_fit (1)" />
         <item itemvalue="Python.simulating" />
+        <item itemvalue="Python.decay_rates_fit (1)" />
         <item itemvalue="Python.decay_rates_fit" />
         <item itemvalue="Python.compare_models" />
         <item itemvalue="Python.collective_memory" />
@@ -244,6 +236,7 @@
       <workItem from="1585616592599" duration="26158000" />
       <workItem from="1585739264520" duration="13497000" />
       <workItem from="1585875060287" duration="42749000" />
+      <workItem from="1587263392585" duration="1226000" />
     </task>
     <task id="LOCAL-00001" summary="can store different decay rates in different json files.">
       <created>1585885932229</created>
@@ -308,11 +301,29 @@
       <option name="project" value="LOCAL" />
       <updated>1585973229356</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="plotting files">
+      <created>1587264422297</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1587264422297</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="can store different decay rates in different json files." />
@@ -324,7 +335,8 @@
     <MESSAGE value="update model comparisons." />
     <MESSAGE value="updated sensibility analysis, and found it unfeasible." />
     <MESSAGE value="update differ datasets" />
-    <option name="LAST_COMMIT_MESSAGE" value="update differ datasets" />
+    <MESSAGE value="plotting files" />
+    <option name="LAST_COMMIT_MESSAGE" value="plotting files" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="91" width="814" height="729" key="#Intentions" timestamp="1585878056435">
@@ -335,10 +347,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1585888382608" />
-    <state x="314" y="40" key="CommitChangelistDialog2" timestamp="1585973228365">
+    <state x="314" y="40" key="CommitChangelistDialog2" timestamp="1587264421350">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="314" y="40" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1585973228365" />
+    <state x="314" y="40" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1587264421350" />
     <state x="549" y="186" key="FileChooserDialogImpl" timestamp="1585469515761">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -379,22 +391,26 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1491" height="277" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1585110005704" />
-    <state x="494" y="143" key="RollbackChangesDialog" timestamp="1585971268573">
+    <state x="494" y="143" key="RollbackChangesDialog" timestamp="1587263826203">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="494" y="143" key="RollbackChangesDialog/0.0.1536.864@0.0.1536.864" timestamp="1585971268573" />
+    <state x="494" y="143" key="RollbackChangesDialog/0.0.1536.864@0.0.1536.864" timestamp="1587263826203" />
     <state x="270" y="74" key="SettingsEditor" timestamp="1585618024965">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="270" y="74" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1585618024965" />
-    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1585971680609">
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1587264437835">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1585971680609" />
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1587264437835" />
     <state x="276" y="137" key="com.intellij.execution.console.ConsoleHistoryController$MyBrowseAction$1" timestamp="1585880963850">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="276" y="137" key="com.intellij.execution.console.ConsoleHistoryController$MyBrowseAction$1/0.0.1536.864@0.0.1536.864" timestamp="1585880963850" />
+    <state x="93" y="93" width="1350" height="678" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1587264375517">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="93" y="93" width="1350" height="678" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.864@0.0.1536.864" timestamp="1587264375517" />
     <state x="449" y="256" key="com.intellij.ide.util.TipDialog" timestamp="1585875161932">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
