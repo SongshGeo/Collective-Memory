@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f68d94a5-4fda-48b4-9b4f-09b529bc4d12" name="Default Changelist" comment="rename">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plotting.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plotting_result1.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/plotting_result1.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plotting_result2.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/plotting_result2.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +233,7 @@
       <workItem from="1585616592599" duration="26158000" />
       <workItem from="1585739264520" duration="13497000" />
       <workItem from="1585875060287" duration="42749000" />
-      <workItem from="1587263392585" duration="1226000" />
+      <workItem from="1587263392585" duration="1511000" />
     </task>
     <task id="LOCAL-00001" summary="can store different decay rates in different json files.">
       <created>1585885932229</created>
@@ -308,7 +305,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587264422297</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="plotting">
+      <created>1587264662743</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1587264662743</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,7 +340,8 @@
     <MESSAGE value="updated sensibility analysis, and found it unfeasible." />
     <MESSAGE value="update differ datasets" />
     <MESSAGE value="plotting files" />
-    <option name="LAST_COMMIT_MESSAGE" value="plotting files" />
+    <MESSAGE value="plotting" />
+    <option name="LAST_COMMIT_MESSAGE" value="plotting" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="91" width="814" height="729" key="#Intentions" timestamp="1585878056435">
@@ -347,10 +352,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1585888382608" />
-    <state x="314" y="40" key="CommitChangelistDialog2" timestamp="1587264421350">
+    <state x="314" y="40" key="CommitChangelistDialog2" timestamp="1587264661977">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="314" y="40" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1587264421350" />
+    <state x="314" y="40" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1587264661977" />
     <state x="549" y="186" key="FileChooserDialogImpl" timestamp="1585469515761">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
