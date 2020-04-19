@@ -37,10 +37,6 @@ ALPHA_H = 84.5  # Relationship between ﬂoodwater levels and relative damage
 # Emergency response (score = 7.54).
 ALPHA_D = 0.75  # Public’s perception of risk
 
-# Because the maximum relative population growth rate ρ_D is difficult to observe, either directly or indirectly,
-# we estimated ρ_D by a least-squares method.
-RHO_D = 0.00935  # estimated by fitting
-
 # According to (Di Baldassarre et al. 2017)
 ETA_H = 1.1  # Safety factor for raising levees
 

@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f68d94a5-4fda-48b4-9b4f-09b529bc4d12" name="Default Changelist" comment="" />
+    <list default="true" id="f68d94a5-4fda-48b4-9b4f-09b529bc4d12" name="Default Changelist" comment="rename">
+      <change afterPath="$PROJECT_DIR$/.ipynb_checkpoints/test_fitting-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/valid_data_in_English.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/result1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/sankey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plotting_result1.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plotting_result2.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plotting_result3.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/k_list.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/miu_s.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/pqr_dic.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decay_rates_fit.py" beforeDir="false" afterPath="$PROJECT_DIR$/decay_rates_fit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plot.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plotting.ipynb" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +37,9 @@
     <expand />
     <select />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Collective-Memory" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -31,7 +50,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="fix-rho_d" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,31 +70,9 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
-  <component name="RunManager" selected="Python.linear_model">
-    <configuration name="Repeat running exp" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Collective-Memory" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Collective Memory/Collective Memory" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Collective Memory/Collective Memory/Repeat running exp.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.decay_rates_fit (1)">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="Collective-Memory" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -98,7 +95,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="linear_model" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="collective_memory" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Collective-Memory" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -111,7 +108,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/linear_model.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/collective_memory.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -120,7 +117,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="parameters_fit" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="compare_models" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Collective-Memory" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -128,12 +125,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Collective Memory/Collective Memory" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Collective Memory/Collective Memory/parameters_fit.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/compare_models.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -142,20 +139,17 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="try_fit (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="decay_rates_fit (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Collective-Memory" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Collective Memory" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Collective Memory/try_fit.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/decay_rates_fit.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -164,7 +158,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="try_fit" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="decay_rates_fit" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Collective-Memory" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -172,12 +166,34 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Collective Memory/failed py" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Collective Memory/failed py/try_fit.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\ssgg9240\Dropbox\Pycharm projects\Collective-Memory\decay_rates_fit.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="simulating" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Collective-Memory" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/simulating.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -188,11 +204,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.linear_model" />
-        <item itemvalue="Python.Repeat running exp" />
-        <item itemvalue="Python.parameters_fit" />
-        <item itemvalue="Python.try_fit (1)" />
-        <item itemvalue="Python.try_fit" />
+        <item itemvalue="Python.decay_rates_fit (1)" />
+        <item itemvalue="Python.simulating" />
+        <item itemvalue="Python.decay_rates_fit" />
+        <item itemvalue="Python.compare_models" />
+        <item itemvalue="Python.collective_memory" />
       </list>
     </recent_temporary>
   </component>
@@ -220,73 +236,181 @@
       <workItem from="1584926543722" duration="8823000" />
       <workItem from="1584973538875" duration="79000" />
       <workItem from="1585039360433" duration="2519000" />
+      <workItem from="1585101975952" duration="7203000" />
+      <workItem from="1585124028858" duration="22096000" />
+      <workItem from="1585195030171" duration="5373000" />
+      <workItem from="1585393016550" duration="7247000" />
+      <workItem from="1585469655620" duration="16093000" />
+      <workItem from="1585616592599" duration="26158000" />
+      <workItem from="1585739264520" duration="13497000" />
+      <workItem from="1585875060287" duration="42749000" />
     </task>
+    <task id="LOCAL-00001" summary="can store different decay rates in different json files.">
+      <created>1585885932229</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1585885932229</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update json files.">
+      <created>1585885995633</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1585885995633</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update collective_memory.py, if main run, get a simulating results with a 100-year random flooding, in study area.">
+      <created>1585886197276</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1585886197276</updated>
+    </task>
+    <task id="LOCAL-00004" summary="rename and add new files">
+      <created>1585889677888</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1585889677888</updated>
+    </task>
+    <task id="LOCAL-00005" summary="dropna in losses, add a rel-t-test function.">
+      <created>1585890594637</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1585890594637</updated>
+    </task>
+    <task id="LOCAL-00006" summary="change plot way">
+      <created>1585902610836</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1585902610836</updated>
+    </task>
+    <task id="LOCAL-00007" summary="update model comparisons.">
+      <created>1585924236298</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1585924236298</updated>
+    </task>
+    <task id="LOCAL-00008" summary="updated sensibility analysis, and found it unfeasible.">
+      <created>1585971600517</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1585971600517</updated>
+    </task>
+    <task id="LOCAL-00009" summary="update differ datasets">
+      <created>1585973229356</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1585973229356</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="can store different decay rates in different json files." />
+    <MESSAGE value="update json files." />
+    <MESSAGE value="update collective_memory.py, if main run, get a simulating results with a 100-year random flooding, in study area." />
+    <MESSAGE value="rename and add new files" />
+    <MESSAGE value="dropna in losses, add a rel-t-test function." />
+    <MESSAGE value="change plot way" />
+    <MESSAGE value="update model comparisons." />
+    <MESSAGE value="updated sensibility analysis, and found it unfeasible." />
+    <MESSAGE value="update differ datasets" />
+    <option name="LAST_COMMIT_MESSAGE" value="update differ datasets" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="326" y="26" key="CommitChangelistDialog2" timestamp="1584866707701">
+    <state x="361" y="91" width="814" height="729" key="#Intentions" timestamp="1585878056435">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="326" y="26" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1584866707701" />
-    <state x="549" y="186" key="FileChooserDialogImpl" timestamp="1584889230114">
+    <state x="361" y="91" width="814" height="729" key="#Intentions/0.0.1536.864@0.0.1536.864" timestamp="1585878056435" />
+    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585888382608">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="549" y="186" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1584889230114" />
+    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1585888382608" />
+    <state x="314" y="40" key="CommitChangelistDialog2" timestamp="1585973228365">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="314" y="40" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1585973228365" />
+    <state x="549" y="186" key="FileChooserDialogImpl" timestamp="1585469515761">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="549" y="186" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1585469515761" />
     <state x="577" y="345" key="Github.CreateGistDialog" timestamp="1584889295639">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="577" y="345" key="Github.CreateGistDialog/0.0.1536.864@0.0.1536.864" timestamp="1584889295639" />
-    <state width="1491" height="277" key="GridCell.Tab.0.bottom" timestamp="1584671217220">
+    <state width="1491" height="224" key="GridCell.Tab.0.bottom" timestamp="1585477082399">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="277" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1584671217220" />
-    <state width="1491" height="277" key="GridCell.Tab.0.center" timestamp="1584671217220">
+    <state width="1491" height="224" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1585477082399" />
+    <state width="1491" height="224" key="GridCell.Tab.0.center" timestamp="1585477082398">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="277" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1584671217220" />
-    <state width="1491" height="277" key="GridCell.Tab.0.left" timestamp="1584671217220">
+    <state width="1491" height="224" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1585477082398" />
+    <state width="1491" height="224" key="GridCell.Tab.0.left" timestamp="1585477082398">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="277" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1584671217220" />
-    <state width="1491" height="277" key="GridCell.Tab.0.right" timestamp="1584671217220">
+    <state width="1491" height="224" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1585477082398" />
+    <state width="1491" height="224" key="GridCell.Tab.0.right" timestamp="1585477082399">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="277" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1584671217220" />
-    <state width="1491" height="277" key="GridCell.Tab.1.bottom" timestamp="1584671217220">
+    <state width="1491" height="224" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1585477082399" />
+    <state width="1491" height="277" key="GridCell.Tab.1.bottom" timestamp="1585110005704">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="277" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1584671217220" />
-    <state width="1491" height="277" key="GridCell.Tab.1.center" timestamp="1584671217220">
+    <state width="1491" height="277" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1585110005704" />
+    <state width="1491" height="277" key="GridCell.Tab.1.center" timestamp="1585110005704">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="277" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1584671217220" />
-    <state width="1491" height="277" key="GridCell.Tab.1.left" timestamp="1584671217220">
+    <state width="1491" height="277" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1585110005704" />
+    <state width="1491" height="277" key="GridCell.Tab.1.left" timestamp="1585110005704">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="277" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1584671217220" />
-    <state width="1491" height="277" key="GridCell.Tab.1.right" timestamp="1584671217220">
+    <state width="1491" height="277" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1585110005704" />
+    <state width="1491" height="277" key="GridCell.Tab.1.right" timestamp="1585110005704">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1491" height="277" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1584671217220" />
-    <state x="270" y="74" key="SettingsEditor" timestamp="1584889103954">
+    <state width="1491" height="277" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1585110005704" />
+    <state x="494" y="143" key="RollbackChangesDialog" timestamp="1585971268573">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="270" y="74" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1584889103954" />
-    <state x="449" y="256" key="com.intellij.ide.util.TipDialog" timestamp="1585039408923">
+    <state x="494" y="143" key="RollbackChangesDialog/0.0.1536.864@0.0.1536.864" timestamp="1585971268573" />
+    <state x="270" y="74" key="SettingsEditor" timestamp="1585618024965">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="449" y="256" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1585039408923" />
+    <state x="270" y="74" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1585618024965" />
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1585971680609">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1585971680609" />
+    <state x="276" y="137" key="com.intellij.execution.console.ConsoleHistoryController$MyBrowseAction$1" timestamp="1585880963850">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="276" y="137" key="com.intellij.execution.console.ConsoleHistoryController$MyBrowseAction$1/0.0.1536.864@0.0.1536.864" timestamp="1585880963850" />
+    <state x="449" y="256" key="com.intellij.ide.util.TipDialog" timestamp="1585875161932">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="449" y="256" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1585875161932" />
+    <state x="93" y="93" width="1350" height="678" key="dock-window-1" timestamp="1585972104504">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="93" y="93" width="1350" height="678" key="dock-window-1/0.0.1536.864@0.0.1536.864" timestamp="1585972104504" />
     <state x="361" y="91" key="scopes" timestamp="1585042716764">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="361" y="91" key="scopes/0.0.1536.864@0.0.1536.864" timestamp="1585042716764" />
-    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1584806389226">
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1585914687312">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1584806389226" />
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1585914687312" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -305,6 +429,8 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Collective_Memory$linear_model.coverage" NAME="linear_model Coverage Results" MODIFIED="1585103198091" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Collective_Memory$collective_memory.coverage" NAME="collective_memory Coverage Results" MODIFIED="1584667615567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Collective_Memory$fit_parameters.coverage" NAME="fit_parameters Coverage Results" MODIFIED="1585109946601" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
