@@ -6,14 +6,6 @@ Beijing Normal University
 @Contact :   SongshGeo@Gmail.com
 @Time    :   2020/6/20 17:30
 """
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
-"""
-@Author  :   Shuang Song
-Beijing Normal University
-@Contact :   SongshGeo@Gmail.com
-@Time    :   2020/3/19 19:08
-"""
 
 # import from public libraries
 from matplotlib import pyplot as plt
@@ -24,8 +16,7 @@ import pandas as pd
 # import from this project
 from data_process import get_population, get_actual_water_series, W_MAX, W_MIN
 from collective_memory import main_function
-from pop_growth_fit import get_last_k
-
+from data_process import get_last_k
 
 d_max, d_mean, d_min = get_population()  # Actual population data.
 err = d_max - d_mean  # error bar between passive and positive estimation.
@@ -70,7 +61,6 @@ def fit_nash(yo, ym):
 
 
 def get_models_results(pop_growth='exp'):
-
     def exp(t, t_0, n0, k):
         e = math.e
         return n0 * e ** (k * (t - t_0))
