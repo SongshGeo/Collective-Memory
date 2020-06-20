@@ -3,6 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="f68d94a5-4fda-48b4-9b4f-09b529bc4d12" name="Default Changelist" comment="rename">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/plotting_result1-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/plotting_result1-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/plotting_result2-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/plotting_result2-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/plotting_result3-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/plotting_result3-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compare_models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/sankey.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/linear_model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plotting_result1.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/plotting_result1.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plotting_result2.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/plotting_result2.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plotting_result3.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/plotting_result3.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pop_growth_fit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/repeated_simulating.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/simulating.py" beforeDir="false" afterPath="$PROJECT_DIR$/simulating.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +49,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="release" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -234,6 +247,12 @@
       <workItem from="1585739264520" duration="13497000" />
       <workItem from="1585875060287" duration="42749000" />
       <workItem from="1587263392585" duration="1511000" />
+      <workItem from="1587565526876" duration="17000" />
+      <workItem from="1589425297616" duration="256000" />
+      <workItem from="1589426729470" duration="1433000" />
+      <workItem from="1589505781936" duration="1432000" />
+      <workItem from="1589565371428" duration="16000" />
+      <workItem from="1592645032904" duration="6109000" />
     </task>
     <task id="LOCAL-00001" summary="can store different decay rates in different json files.">
       <created>1585885932229</created>
@@ -312,7 +331,35 @@
       <option name="project" value="LOCAL" />
       <updated>1587264662743</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="recover file">
+      <created>1592645487426</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1592645487426</updated>
+    </task>
+    <task id="LOCAL-00013" summary="recover file">
+      <created>1592645533573</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1592645533573</updated>
+    </task>
+    <task id="LOCAL-00014" summary="formulate model_test.py">
+      <created>1592647657175</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1592647657175</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Combine repeated simulations and simulations into one file">
+      <created>1592656214853</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1592656214853</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,7 +370,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -341,21 +390,24 @@
     <MESSAGE value="update differ datasets" />
     <MESSAGE value="plotting files" />
     <MESSAGE value="plotting" />
-    <option name="LAST_COMMIT_MESSAGE" value="plotting" />
+    <MESSAGE value="recover file" />
+    <MESSAGE value="formulate model_test.py" />
+    <MESSAGE value="Combine repeated simulations and simulations into one file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Combine repeated simulations and simulations into one file" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="91" width="814" height="729" key="#Intentions" timestamp="1585878056435">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="361" y="91" width="814" height="729" key="#Intentions/0.0.1536.864@0.0.1536.864" timestamp="1585878056435" />
-    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585888382608">
+    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592648156187">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1585888382608" />
-    <state x="314" y="40" key="CommitChangelistDialog2" timestamp="1587264661977">
+    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1592648156187" />
+    <state x="314" y="40" key="CommitChangelistDialog2" timestamp="1592656213899">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="314" y="40" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1587264661977" />
+    <state x="314" y="40" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1592656213899" />
     <state x="549" y="186" key="FileChooserDialogImpl" timestamp="1585469515761">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -416,10 +468,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="93" y="93" width="1350" height="678" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.864@0.0.1536.864" timestamp="1587264375517" />
-    <state x="449" y="256" key="com.intellij.ide.util.TipDialog" timestamp="1585875161932">
+    <state x="449" y="256" key="com.intellij.ide.util.TipDialog" timestamp="1589565372293">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="449" y="256" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1585875161932" />
+    <state x="449" y="256" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1589565372293" />
     <state x="93" y="93" width="1350" height="678" key="dock-window-1" timestamp="1585972104504">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -428,10 +480,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="361" y="91" key="scopes/0.0.1536.864@0.0.1536.864" timestamp="1585042716764" />
-    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1585914687312">
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1589505845633">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1585914687312" />
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1589505845633" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
