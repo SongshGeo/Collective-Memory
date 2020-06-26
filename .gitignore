@@ -134,3 +134,6 @@ dmypy.json
 !/.ipynb_checkpoints/
 !/.idea/workspace.xml
 /.ipynb_checkpoints/
+/.idea/
+/data/
+/images/
